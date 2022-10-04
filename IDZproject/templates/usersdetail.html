@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+                <div class="msg8">
+         {% if user.is_authenticated %}
+              <p style="float: right;"><strong>User Loggen In:</strong> {{user.first_name}} {{user.last_name}}</p> 
+              {% endif %} 
+             {% if messages %}
+             <h3 align="left">Registration Successful</h3>
+             {% for message in messages %}
+           <p style ="color:grey" align="left" >  {{ message | safe }}  </p> 
+             {% endfor %}
+             {% else %}
+             <h3 align="left">All Registrations</h3>
+             {% endif %}
+             <div class="table-responsive">
+             <table class="table" >
+             <thead>
+             <tr>
+             <th scope="col">Name</th>
+             <th scope="col">Birthday</th>
+             <th>Email</th>
+             <th>Edit/Delete</th>
+             </tr>
+             </thead>
+             <tbody>
+              {% for user in object_list %}
+            <tr>
+             <td><a href="update/{{user.pk}}">{{user.first_name}} {{user.last_name}}</a></td> 
+             <td>{{user.birthdate}}</td>
+             <td>{{user.email}}</td>
+             <td><a class="btn btn-primary" href="update/{{user.pk}}" >Edit</a>  <a href="delete/{{user.pk}}" class="btn btn-secondary" >Delete</a></td>  
+             </tr>
+           
+
+             {% endfor %}
+             
+             </tbody>
+             </table>    
+             <div class="pagination" >
+             <span class="step-links">
+             {% if page_obj.has_previous %}
+             <a href="?page=1">&laquo; first</a>
+             <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+             {% endif %}
+             
+        
+             
+             {% if page_obj.has_next %}
+             
+             <a href="?page={{ page_obj.next_page_number }}">next</a>
+             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+             {% endif %}
+             </span>
+             </div>
+              </div>                      
+                </div>
+         
+              
+{% endblock %}
+</body>
+</html>

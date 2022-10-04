@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+                <div class="msg8">
+                <h3>Employees Details </h3>
+                <!-- <form method="get">
+
+    <div class="input-group rounded">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+    <button type="submit">Search</button>
+  </span>
+</div>
+             </form> -->
+              {% for jd in json_data.employees %}
+              
+             <a href="api_data/{{jd.name}}"><div class="msg8">
+             <h6>{{forloop.counter}}</h6>
+             <p>{{jd.name}}</p>
+            <p > {{jd.age}}</p>
+            <p> {{jd.salary}}</p>            
+                </div>
+                   {% endfor %}  
+             </div></a>
+              
+              
+{% endblock %}
+</body>
+</html>

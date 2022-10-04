@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+                <div class="msg8">
+                <h3>Employee Detail </h3>
+             
+              {% for k,v in jsondetail.items %}
+              
+          
+            
+             <p>{{v}}</p>
+                    
+              
+                   {% endfor %}  
+             </div>
+              
+              
+{% endblock %}
+</body>
+</html>
