@@ -3,6 +3,9 @@
 
                 <div class="msg8">
                 <h3>Employees Details </h3>
+                
+              <a href ="add_api" class="btn btn-primary">Add</a>  
+              <br>
                 <!-- <form method="get">
 
     <div class="input-group rounded">
@@ -13,7 +16,7 @@
 </div>
              </form> -->
               {% for jd in json_data.employees %}
-              
+              <br>
              <a href="api_data/{{jd.name}}"><div class="msg8">
              <h6>{{forloop.counter}}</h6>
              <p>{{jd.name}}</p>

@@ -24,7 +24,7 @@ class UserUpdateForm(forms.ModelForm):
 		widgets = {
 			'birthdate':forms.DateInput(attrs={'type':'date','max':date}),
 			'mobile_number':forms.NumberInput(attrs={'type':'number','maxlength':10}),
-			'email':forms.EmailInput(attrs={'type':'email'}),		
+			'email':forms.EmailInput(attrs={'type':'email', 'readonly':'readonly'})
 	}
 	
 	def clean(self):	

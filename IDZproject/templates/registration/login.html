@@ -551,11 +551,18 @@
     
      <div class="content" >
     
+        {% if messages %}
         
+        {% for message in messages %}
+       <div class="alert alert-error alert-dismissible fade show my-0" role="alert" style="background-color:#FFFFE0;color:red;border-style:solid;border-color:red;"> 
+        {{ message }} 
+        </div>
+        {% endfor %}
+     {% endif %}
         {% if form.errors %}
        
         <div class="alert alert-error alert-dismissible fade show my-0" role="alert" style="background-color:#FFFFE0;color:red;border-style:solid;border-color:red;">
-         <p>username or password is incorrect </p>
+         <p>email or password is incorrect </p>
        </div>
    
        {% endif %}

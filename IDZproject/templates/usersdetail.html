@@ -6,29 +6,35 @@
               <p style="float: right;"><strong>User Loggen In:</strong> {{user.first_name}} {{user.last_name}}</p> 
               {% endif %} 
              {% if messages %}
-             <h3 align="left">Registration Successful</h3>
+             
              {% for message in messages %}
-           <p style ="color:grey" align="left" >  {{ message | safe }}  </p> 
+       {{ message | safe }} 
              {% endfor %}
              {% else %}
              <h3 align="left">All Registrations</h3>
              {% endif %}
+             
              <div class="table-responsive">
              <table class="table" >
              <thead>
              <tr>
+             <th>#</th>
              <th scope="col">Name</th>
              <th scope="col">Birthday</th>
+             <th>Mobile</th>
              <th>Email</th>
              <th>Edit/Delete</th>
              </tr>
              </thead>
              <tbody>
+             
               {% for user in object_list %}
             <tr>
+            <td>{{forloop.counter}}</td>
              <td><a href="update/{{user.pk}}">{{user.first_name}} {{user.last_name}}</a></td> 
-             <td>{{user.birthdate}}</td>
-             <td>{{user.email}}</td>
+             <td><a href="update/{{user.pk}}">{{user.birthdate}}</a></td>
+             <td><a href="update/{{user.pk}}">{{user.mobile_number}}</a></td>
+             <td><a href="update/{{user.pk}}">{{user.email}}</a></td>
              <td><a class="btn btn-primary" href="update/{{user.pk}}" >Edit</a>  <a href="delete/{{user.pk}}" class="btn btn-secondary" >Delete</a></td>  
              </tr>
            

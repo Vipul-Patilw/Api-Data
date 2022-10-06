@@ -8,6 +8,7 @@ urlpatterns = [
    path('user/registration',views.UserCreate.as_view(), name='user-registration'),
    path('',views.UsersDetail.as_view(), name='usersdetail'),
    path('usersdetail',views.UsersDetail.as_view(), name='usersdetail'),
+   path('add_api',views.ApiAdd.as_view(), name='add-api'),
 #   path('login',views.sign, name='login'),
    path('pass',changePassword.as_view(template_name='changePassword.html')),
    path('password_success',views.password_success, name='password_success'),
