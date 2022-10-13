@@ -14,9 +14,16 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import  LoginRequiredMixin
 
 from django.views.generic.edit import UpdateView,DeleteView,FormView
-from IDZapk import  json_data
+from IDZapk.json_data import  json_data
 from IDZapk import  customlog
+from IDZapk.serializers import UserSerializer
+from rest_framework import viewsets
+
 # Create your views here.
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = UserRegistration.objects.all()
+	serializer_class = UserSerializer 
+	
 
 class UserCreate(SuccessMessageMixin,CreateView):
 
@@ -74,7 +81,7 @@ class JsonData(customlog.CustomLoginRequiredMixin,TemplateView):
 	template_name = 'jsondata.html'
 	permission_denied_message = 'You have to be logged in to access that page'
 
-	extra_context = {'json_data':json_data.json_data}
+	extra_context = {'json_data':json_data}
 
 
 class ApiAdd(FormView):
@@ -89,7 +96,7 @@ class JsonDetail(customlog.CustomLoginRequiredMixin,TemplateView):
 	def get_context_data(self, *args,**kwargs):
 		context = super(JsonDetail, self).get_context_data(*args,**kwargs)
 		
-		for i in json_data.json_data['employees']:
+		for i in json_data['employees']:
 				if i['name'] == kwargs['name']:
 					context = i
 		return {'jsondetail':context}

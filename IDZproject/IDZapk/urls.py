@@ -1,10 +1,19 @@
 #pylint:disable=E0001
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from rest_framework import routers
+from IDZapk.views import UserViewSet
 from django.contrib.auth import views as auth_views
 from . import views
 from .views import changePassword
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
 urlpatterns = [
+   #for mobile Application
+   path('mobile-app', include(router.urls)),
+   #for web application
    path('user/registration',views.UserCreate.as_view(), name='user-registration'),
    path('',views.UsersDetail.as_view(), name='usersdetail'),
    path('usersdetail',views.UsersDetail.as_view(), name='usersdetail'),
